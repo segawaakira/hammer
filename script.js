@@ -44,3 +44,25 @@ mc.on("panend pinchend rotateend", function(e) {
   adjustDeltaX = currentDeltaX;
   adjustDeltaY = currentDeltaY;
 });
+
+
+
+window.onload = function () {
+  var canvas = new fabric.Canvas('canvas');
+  canvas.add(new fabric.Rect({
+      left: 100,
+      top: 100,
+      width: 75,
+      height: 50,
+      fill: 'green',
+      padding: 10
+    }));
+
+    // ４辺の真ん中のハンドル非表示
+    canvas.item(0)['setControlVisible']('mb', false);
+    canvas.item(0)['setControlVisible']('mt', false);
+    canvas.item(0)['setControlVisible']('ml', false);
+    canvas.item(0)['setControlVisible']('mr', false);
+
+    canvas.renderAll();
+}
