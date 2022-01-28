@@ -4,10 +4,22 @@ window.onload = function () {
   canvas.setWidth(1000);
   canvas.setHeight(1000);
   fabric.Image.fromURL('./sample.png', function (oImg) {
+    oImg.set({
+      originX: 'center',
+      originY: 'center',
+    })
+    canvas.add(oImg)
+  })
+  fabric.Image.fromURL('./sample.png', function (oImg) {
+    oImg.set({
+      top: 200,
+      left: 200,
+      originX: 'center',
+      originY: 'center',
+    })
     canvas.add(oImg)
   })
   canvas.renderAll();
-
 
     document.body.addEventListener('touchmove', function(event) {
       event.preventDefault();
@@ -34,7 +46,9 @@ window.onload = function () {
     let currentRotation = null;
     
     mc.on("panstart pinchstart rotatestart", function(e) {
-      adjustRotation -= e.rotation;
+      const activeObject = canvas.getActiveObject()
+      adjustRotation -= e.rotation // TODO:前選択した角度が反映されてしまう。
+      adjustScale = activeObject.scaleX
     });
     
     mc.on("panmove pinchmove rotatemove", function(e) {
