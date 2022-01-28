@@ -5,32 +5,21 @@ window.onload = function () {
   canvas.setWidth(1000);
   canvas.setHeight(1000);
 
-  const hideHandle = (oImg) => {
-    oImg.setControlVisible('mb', false)
-    oImg.setControlVisible('mt', false)
-    oImg.setControlVisible('ml', false)
-    oImg.setControlVisible('mr', false)
-  }
+  canvas.add(new fabric.Rect({
+      left: 50,
+      top: 50,
+      width: 100,
+      height: 100,
+      fill: 'green'
+    }));
 
-  fabric.Image.fromURL('./sample.png', function (oImg) {
-    oImg.set({
-      originX: 'center',
-      originY: 'center',
-    })
-    canvas.add(oImg)
-    hideHandle(oImg)
-  })
-
-  fabric.Image.fromURL('./sample.png', function (oImg) {
-    oImg.set({
-      top: 200,
-      left: 200,
-      originX: 'center',
-      originY: 'center',
-    })
-    canvas.add(oImg)
-    hideHandle(oImg)
-  })
+    canvas.add(new fabric.Rect({
+      left: 150,
+      top: 150,
+      width: 100,
+      height: 100,
+      fill: 'blue'
+    }));
 
   canvas.renderAll();
 
